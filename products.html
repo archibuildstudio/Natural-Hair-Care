@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - National Hair Products Shop</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <style>
+        .filters {
+            background: var(--light-gray);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .price-range {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .filter-group {
+            margin-bottom: 1rem;
+        }
+
+        .filter-group h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sort-select {
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Hair Care Shop</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="auth/login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Products Section -->
+    <div class="container p-4">
+        <h1 class="text-center mb-4">Our Products</h1>
+
+        <div class="grid grid-4-1">
+            <!-- Filters Sidebar -->
+            <div class="filters">
+                <h2 class="mb-3">Filters</h2>
+                
+                <div class="filter-group">
+                    <h3>Categories</h3>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="category" value="shampoo"> Shampoo & Conditioner
+                        </label>
+                        <label>
+                            <input type="checkbox" name="category" value="styling"> Styling Products
+                        </label>
+                        <label>
+                            <input type="checkbox" name="category" value="treatment"> Hair Treatment
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Price Range</h3>
+                    <div class="price-range">
+                        <input type="number" placeholder="Min" min="0" class="form-input">
+                        <span>to</span>
+                        <input type="number" placeholder="Max" min="0" class="form-input">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Hair Type</h3>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="hairType" value="straight"> Straight
+                        </label>
+                        <label>
+                            <input type="checkbox" name="hairType" value="wavy"> Wavy
+                        </label>
+                        <label>
+                            <input type="checkbox" name="hairType" value="curly"> Curly
+                        </label>
+                        <label>
+                            <input type="checkbox" name="hairType" value="coily"> Coily
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Concerns</h3>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="concern" value="damage"> Damage Repair
+                        </label>
+                        <label>
+                            <input type="checkbox" name="concern" value="volume"> Volume
+                        </label>
+                        <label>
+                            <input type="checkbox" name="concern" value="color"> Color Protection
+                        </label>
+                        <label>
+                            <input type="checkbox" name="concern" value="frizz"> Anti-Frizz
+                        </label>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary w-full" onclick="applyFilters()">Apply Filters</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div>
+                <div class="mb-4 flex justify-between items-center">
+                    <p><span id="productCount">12</span> products found</p>
+                    <select class="sort-select" onchange="sortProducts(this.value)">
+                        <option value="recommended">Recommended</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+                </div>
+
+                <div class="product-grid" id="productsContainer">
+                    <!-- Product cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="products.html?category=shampoo">Shampoo & Conditioner</a></li>
+                        <li><a href="products.html?category=styling">Styling Products</a></li>
+                        <li><a href="products.html?category=treatment">Hair Treatment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>123 Hair Care Street</li>
+                        <li>Beauty City, ST 12345</li>
+                        <li>Phone: (555) 123-4567</li>
+                        <li>Email: info@haircare.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2025 Hair Care Shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample product data
+        const products = [
+            {
+                id: 1,
+                name: 'Premium Hair Shampoo',
+                description: 'Nourishing formula for all hair types',
+                price: 24.99,
+                image: 'public/images/product-shampoo.jpg',
+                category: 'shampoo',
+                hairType: ['straight', 'wavy', 'curly'],
+                concerns: ['damage', 'volume']
+            },
+            {
+                id: 2,
+                name: 'Intensive Hair Mask',
+                description: 'Deep conditioning treatment',
+                price: 34.99,
+                image: 'public/images/product-mask.jpg',
+                category: 'treatment',
+                hairType: ['curly', 'coily'],
+                concerns: ['damage', 'frizz']
+            },
+            // Add more products...
+        ];
+
+        function createProductCard(product) {
+            return `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p>${product.description}</p>
+                        <p class="product-price">$${product.price.toFixed(2)}</p>
+                        <button class="btn btn-primary mt-2" onclick="addToCart(${product.id})">Add to Cart</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function displayProducts(productsToShow = products) {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = productsToShow.map(product => createProductCard(product)).join('');
+            document.getElementById('productCount').textContent = productsToShow.length;
+        }
+
+        function applyFilters() {
+            let filteredProducts = [...products];
+
+            // Get selected categories
+            const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked'))
+                .map(input => input.value);
+            
+            if (selectedCategories.length > 0) {
+                filteredProducts = filteredProducts.filter(product => 
+                    selectedCategories.includes(product.category)
+                );
+            }
+
+            // Get price range
+            const minPrice = parseFloat(document.querySelector('.price-range input:first-child').value);
+            const maxPrice = parseFloat(document.querySelector('.price-range input:last-child').value);
+            
+            if (!isNaN(minPrice)) {
+                filteredProducts = filteredProducts.filter(product => product.price >= minPrice);
+            }
+            if (!isNaN(maxPrice)) {
+                filteredProducts = filteredProducts.filter(product => product.price <= maxPrice);
+            }
+
+            // Get selected hair types
+            const selectedHairTypes = Array.from(document.querySelectorAll('input[name="hairType"]:checked'))
+                .map(input => input.value);
+            
+            if (selectedHairTypes.length > 0) {
+                filteredProducts = filteredProducts.filter(product => 
+                    product.hairType.some(type => selectedHairTypes.includes(type))
+                );
+            }
+
+            // Get selected concerns
+            const selectedConcerns = Array.from(document.querySelectorAll('input[name="concern"]:checked'))
+                .map(input => input.value);
+            
+            if (selectedConcerns.length > 0) {
+                filteredProducts = filteredProducts.filter(product => 
+                    product.concerns.some(concern => selectedConcerns.includes(concern))
+                );
+            }
+
+            displayProducts(filteredProducts);
+        }
+
+        function sortProducts(value) {
+            const productsArray = [...products];
+            
+            switch (value) {
+                case 'price-low':
+                    productsArray.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    productsArray.sort((a, b) => b.price - a.price);
+                    break;
+                case 'name':
+                    productsArray.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                default:
+                    // Default sorting (recommended)
+                    break;
+            }
+            
+            displayProducts(productsArray);
+        }
+
+        function addToCart(productId) {
+            // Implement cart functionality
+            alert('Product added to cart!');
+        }
+
+        // Initialize the page
+        displayProducts();
+    </script>
+</body>
+</html>

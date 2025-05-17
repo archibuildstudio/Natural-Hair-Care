@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - National Hair Products Shop</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <style>
+        .contact-info {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info-item img {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Hair Care Shop</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="auth/login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Content -->
+    <div class="container p-4">
+        <h1 class="text-center mb-4">Contact Us</h1>
+        
+        <div class="grid grid-2 gap-4">
+            <!-- Contact Form -->
+            <div class="card">
+                <div class="card-content">
+                    <h2 class="mb-3">Send us a Message</h2>
+                    <form id="contactForm" onsubmit="return validateForm(event)">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                            <span class="error" id="nameError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                            <span class="error" id="emailError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-input" required>
+                            <span class="error" id="subjectError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-input" rows="5" required></textarea>
+                            <span class="error" id="messageError"></span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div>
+                <div class="contact-info mb-4">
+                    <h2 class="mb-3">Contact Information</h2>
+                    <div class="contact-info-item">
+                        <img src="public/icons/location.png" alt="Location">
+                        <p>123 Hair Care Street<br>Beauty City, ST 12345</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <img src="public/icons/phone.png" alt="Phone">
+                        <p>(555) 123-4567</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <img src="public/icons/email.png" alt="Email">
+                        <p>info@haircare.com</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <img src="public/icons/clock.png" alt="Hours">
+                        <div>
+                            <p>Monday - Saturday: 9:00 AM - 8:00 PM</p>
+                            <p>Sunday: 10:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps -->
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.867931986571!2d-73.98509668459375!3d40.75798797932636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1629290574615!5m2!1sen!2sus"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="products.html?category=shampoo">Shampoo & Conditioner</a></li>
+                        <li><a href="products.html?category=styling">Styling Products</a></li>
+                        <li><a href="products.html?category=treatment">Hair Treatment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>123 Hair Care Street</li>
+                        <li>Beauty City, ST 12345</li>
+                        <li>Phone: (555) 123-4567</li>
+                        <li>Email: info@haircare.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2025 Hair Care Shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            
+            // Reset error messages
+            document.querySelectorAll('.error').forEach(error => error.textContent = '');
+            
+            let isValid = true;
+            
+            // Validate name
+            const name = document.getElementById('name').value;
+            if (name.length < 2) {
+                document.getElementById('nameError').textContent = 'Name must be at least 2 characters long';
+                isValid = false;
+            }
+            
+            // Validate email
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                isValid = false;
+            }
+            
+            // Validate subject
+            const subject = document.getElementById('subject').value;
+            if (subject.length < 5) {
+                document.getElementById('subjectError').textContent = 'Subject must be at least 5 characters long';
+                isValid = false;
+            }
+            
+            // Validate message
+            const message = document.getElementById('message').value;
+            if (message.length < 10) {
+                document.getElementById('messageError').textContent = 'Message must be at least 10 characters long';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                alert('Thank you for your message! We will get back to you soon.');
+                document.getElementById('contactForm').reset();
+            }
+            
+            return false;
+        }
+    </script>
+</body>
+</html>

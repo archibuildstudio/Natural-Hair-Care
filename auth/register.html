@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - National Hair Products Shop</title>
+    <link rel="stylesheet" href="../src/styles/style.css">
+    <style>
+        .error {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        .password-requirements {
+            font-size: 0.875rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">Hair Care Shop</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../products.html">Products</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Registration Form -->
+    <div class="container p-4">
+        <div class="max-w-md mx-auto">
+            <div class="card">
+                <div class="card-content">
+                    <h1 class="text-center mb-4">Create Account</h1>
+                    
+                    <form id="registrationForm" onsubmit="return validateForm(event)">
+                        <div class="grid grid-2 gap-4">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-input" required>
+                                <span class="error" id="firstNameError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-input" required>
+                                <span class="error" id="lastNameError"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                            <span class="error" id="emailError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="1234567890" required>
+                            <span class="error" id="phoneError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" name="password" class="form-input" required>
+                            <div class="password-requirements">
+                                Password must contain:
+                                <ul>
+                                    <li>At least 8 characters</li>
+                                    <li>One uppercase letter</li>
+                                    <li>One lowercase letter</li>
+                                    <li>One number</li>
+                                    <li>One special character</li>
+                                </ul>
+                            </div>
+                            <span class="error" id="passwordError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required>
+                            <span class="error" id="confirmPasswordError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="terms" name="terms" class="mr-2" required>
+                                I accept the <a href="#" class="text-primary ml-1">terms and conditions</a>
+                            </label>
+                            <span class="error" id="termsError"></span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-full">Create Account</button>
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <p>Already have an account? <a href="login.html" class="text-primary">Sign in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About</a></li>
+                        <li><a href="../products.html">Products</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="../products.html?category=shampoo">Shampoo & Conditioner</a></li>
+                        <li><a href="../products.html?category=styling">Styling Products</a></li>
+                        <li><a href="../products.html?category=treatment">Hair Treatment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>123 Hair Care Street</li>
+                        <li>Beauty City, ST 12345</li>
+                        <li>Phone: (555) 123-4567</li>
+                        <li>Email: info@haircare.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2025 Hair Care Shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            
+            // Reset error messages
+            document.querySelectorAll('.error').forEach(error => error.textContent = '');
+            
+            let isValid = true;
+            
+            // Validate first name
+            const firstName = document.getElementById('firstName').value;
+            if (firstName.length < 2) {
+                document.getElementById('firstNameError').textContent = 'First name must be at least 2 characters long';
+                isValid = false;
+            }
+            
+            // Validate last name
+            const lastName = document.getElementById('lastName').value;
+            if (lastName.length < 2) {
+                document.getElementById('lastNameError').textContent = 'Last name must be at least 2 characters long';
+                isValid = false;
+            }
+            
+            // Validate email
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                isValid = false;
+            }
+            
+            // Validate phone
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone)) {
+                document.getElementById('phoneError').textContent = 'Please enter a valid 10-digit phone number';
+                isValid = false;
+            }
+            
+            // Validate password
+            const password = document.getElementById('password').value;
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                document.getElementById('passwordError').textContent = 'Password does not meet requirements';
+                isValid = false;
+            }
+            
+            // Validate confirm password
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (password !== confirmPassword) {
+                document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+                isValid = false;
+            }
+            
+            // Validate terms acceptance
+            const terms = document.getElementById('terms').checked;
+            if (!terms) {
+                document.getElementById('termsError').textContent = 'You must accept the terms and conditions';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                alert('Registration successful! Please check your email to verify your account.');
+                window.location.href = 'login.html';
+            }
+            
+            return false;
+        }
+    </script>
+</body>
+</html>

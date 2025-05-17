@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - National Hair Products Shop</title>
+    <link rel="stylesheet" href="../src/styles/style.css">
+    <style>
+        .verification-code {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .verification-code input {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 1.25rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .verification-code input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .error {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .countdown {
+            font-size: 0.875rem;
+            color: var(--text-color);
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">Hair Care Shop</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../products.html">Products</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="container p-4">
+        <div class="max-w-md mx-auto">
+            <div class="card">
+                <div class="card-content">
+                    <h1 class="text-center mb-4">Login</h1>
+                    
+                    <form id="loginForm" onsubmit="return validateForm(event)">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form-input" 
+                                required
+                                autocomplete="email"
+                            >
+                            <span class="error" id="emailError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                class="form-input" 
+                                required
+                                autocomplete="current-password"
+                            >
+                            <span class="error" id="passwordError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="verificationCode" class="form-label">Verification Code</label>
+                            <div class="verification-code">
+                                <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+                                <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+                                <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+                                <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+                                <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+                                <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+                            </div>
+                            <div id="countdown" class="countdown"></div>
+                            <button 
+                                type="button" 
+                                class="btn btn-secondary mt-2" 
+                                onclick="generateVerificationCode()"
+                                id="getCodeBtn"
+                            >
+                                Get Verification Code
+                            </button>
+                            <span class="error" id="verificationError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="remember" name="remember" class="mr-2">
+                                Remember me
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-full">Sign In</button>
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <a href="#" class="text-primary">Forgot password?</a>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <p>Don't have an account? <a href="register.html" class="text-primary">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About</a></li>
+                        <li><a href="../products.html">Products</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="../products.html?category=shampoo">Shampoo & Conditioner</a></li>
+                        <li><a href="../products.html?category=styling">Styling Products</a></li>
+                        <li><a href="../products.html?category=treatment">Hair Treatment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>123 Hair Care Street</li>
+                        <li>Beauty City, ST 12345</li>
+                        <li>Phone: (555) 123-4567</li>
+                        <li>Email: info@haircare.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2025 Hair Care Shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let verificationCode = '';
+        let countdownInterval;
+
+        // Set up verification code input handling
+        const verificationInputs = document.querySelectorAll('.verification-code input');
+        verificationInputs.forEach((input, index) => {
+            // Handle input
+            input.addEventListener('input', (e) => {
+                if (e.target.value) {
+                    if (index < verificationInputs.length - 1) {
+                        verificationInputs[index + 1].focus();
+                    }
+                }
+            });
+
+            // Handle backspace
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    verificationInputs[index - 1].focus();
+                }
+            });
+        });
+
+        function generateVerificationCode() {
+            // Generate a random 6-digit code
+            verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+            
+            // Show the code (in a real application, this would be sent via email or SMS)
+            alert(`Your verification code is: ${verificationCode}`);
+            
+            // Start countdown
+            let timeLeft = 60;
+            const countdownEl = document.getElementById('countdown');
+            const getCodeBtn = document.getElementById('getCodeBtn');
+            
+            getCodeBtn.disabled = true;
+            
+            countdownInterval = setInterval(() => {
+                timeLeft--;
+                countdownEl.textContent = `Get new code in ${timeLeft} seconds`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    countdownEl.textContent = '';
+                    getCodeBtn.disabled = false;
+                }
+            }, 1000);
+        }
+
+        function validateForm(event) {
+            event.preventDefault();
+            
+            // Reset error messages
+            document.querySelectorAll('.error').forEach(error => error.textContent = '');
+            
+            let isValid = true;
+            
+            // Validate email
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                isValid = false;
+            }
+            
+            // Validate password
+            const password = document.getElementById('password').value;
+            if (password.length < 8) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long';
+                isValid = false;
+            }
+            
+            // Validate verification code
+            const enteredCode = Array.from(verificationInputs)
+                .map(input => input.value)
+                .join('');
+            
+            if (!verificationCode) {
+                document.getElementById('verificationError').textContent = 'Please generate a verification code';
+                isValid = false;
+            } else if (enteredCode !== verificationCode) {
+                document.getElementById('verificationError').textContent = 'Invalid verification code';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // In a real application, this would make an API call to verify credentials
+                alert('Login successful!');
+                window.location.href = '../index.html';
+            }
+            
+            return false;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Hair Products Shop</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Hair Care Shop</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="auth/login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Your Ultimate Hair Care Destination</h1>
+            <p>Discover premium hair products that transform your look and maintain healthy, beautiful hair.</p>
+            <a href="products.html" class="btn btn-primary">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="container">
+        <h2 class="text-center mb-4">Shop by Category</h2>
+        <div class="grid grid-3">
+            <div class="card">
+                <img src="public/images/category-shampoo.jpg" alt="Shampoo & Conditioner" class="card-image">
+                <div class="card-content">
+                    <h3>Shampoo & Conditioner</h3>
+                    <a href="products.html?category=shampoo" class="btn btn-primary mt-2">View Products</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="public/images/category-styling.jpg" alt="Styling Products" class="card-image">
+                <div class="card-content">
+                    <h3>Styling Products</h3>
+                    <a href="products.html?category=styling" class="btn btn-primary mt-2">View Products</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="public/images/category-treatment.jpg" alt="Hair Treatment" class="card-image">
+                <div class="card-content">
+                    <h3>Hair Treatment</h3>
+                    <a href="products.html?category=treatment" class="btn btn-primary mt-2">View Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="container mt-4">
+        <h2 class="text-center mb-4">Featured Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="public/images/product-shampoo.jpg" alt="Premium Hair Shampoo" class="product-image">
+                <div class="product-details">
+                    <h3 class="product-title">Premium Hair Shampoo</h3>
+                    <p>Nourishing formula for all hair types</p>
+                    <p class="product-price">$24.99</p>
+                    <button class="btn btn-primary mt-2">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="public/images/product-mask.jpg" alt="Intensive Hair Mask" class="product-image">
+                <div class="product-details">
+                    <h3 class="product-title">Intensive Hair Mask</h3>
+                    <p>Deep conditioning treatment</p>
+                    <p class="product-price">$34.99</p>
+                    <button class="btn btn-primary mt-2">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="public/images/product-cream.jpg" alt="Styling Cream" class="product-image">
+                <div class="product-details">
+                    <h3 class="product-title">Styling Cream</h3>
+                    <p>Light hold with natural finish</p>
+                    <p class="product-price">$19.99</p>
+                    <button class="btn btn-primary mt-2">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="public/images/product-serum.jpg" alt="Hair Oil Serum" class="product-image">
+                <div class="product-details">
+                    <h3 class="product-title">Hair Oil Serum</h3>
+                    <p>Smoothing and anti-frizz</p>
+                    <p class="product-price">$29.99</p>
+                    <button class="btn btn-primary mt-2">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="container mt-4">
+        <h2 class="text-center mb-4">What Our Customers Say</h2>
+        <div class="grid grid-3">
+            <div class="card">
+                <div class="card-content">
+                    <p>"The products here have completely transformed my hair care routine. My hair has never looked better!"</p>
+                    <div class="mt-2">
+                        <strong>Sarah Johnson</strong>
+                        <p>Regular Customer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <p>"Great selection of professional hair care products. The customer service is exceptional."</p>
+                    <div class="mt-2">
+                        <strong>Michael Chen</strong>
+                        <p>Verified Buyer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <p>"I recommend these products to all my clients. The quality is consistently outstanding."</p>
+                    <div class="mt-2">
+                        <strong>Emma Wilson</strong>
+                        <p>Hair Stylist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="products.html?category=shampoo">Shampoo & Conditioner</a></li>
+                        <li><a href="products.html?category=styling">Styling Products</a></li>
+                        <li><a href="products.html?category=treatment">Hair Treatment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>123 Hair Care Street</li>
+                        <li>Beauty City, ST 12345</li>
+                        <li>Phone: (555) 123-4567</li>
+                        <li>Email: info@haircare.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2025 Hair Care Shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
